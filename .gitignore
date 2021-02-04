@@ -13,3 +13,4 @@
 *.user
 */.vs
 /.vs
+/Calculator.Test.Unit/bin/Debug/netcoreapp3.1/nunit_random_seed.tmp
