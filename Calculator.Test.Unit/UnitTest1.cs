@@ -29,6 +29,23 @@ namespace Calculator.Test.Unit
             Assert.That(_calc.Add(a,b),Is.EqualTo(res));
         }
 
+        [TestCase(5, 0, 5)]
+        [TestCase(6, 1, 7)]
+        [TestCase(7, -1, 6)]
+        [TestCase(0, 0, 0)]
+        [TestCase(0, 1, 1)]
+        [TestCase(0, -1, -1)]
+        [TestCase(-5, 0, -5)]
+        [TestCase(-6, 1, -4)]
+        [TestCase(-7, -1, -8)]
+        public void AddOverloadOneParamTest(double initial, double b, double res)
+        {
+            //Store the initial value in accumulator
+            _calc.Add(initial, 0);
+            //Test overload
+            Assert.That(_calc.Add(b), Is.EqualTo(res));
+        }
+
         [TestCase(0, 0, 0)]
         [TestCase(0, 1, -1)]
         [TestCase(0, -1, 1)]
@@ -41,6 +58,23 @@ namespace Calculator.Test.Unit
         public void SubtractTest(double a, double b, double res)
         {
             Assert.That(_calc.Subtract(a,b), Is.EqualTo(res));
+        }
+
+        [TestCase(5, 0, 5)]
+        [TestCase(6, 1, 5)]
+        [TestCase(7, -1, 8)]
+        [TestCase(0, 0, 0)]
+        [TestCase(0, 1, -1)]
+        [TestCase(0, -1, 1)]
+        [TestCase(-5, 0, -5)]
+        [TestCase(-6, 1, -7)]
+        [TestCase(-7, -1, -6)]
+        public void SubtractOverloadOneParamTest(double initial, double b, double res)
+        {
+            //Store the initial value in accumulator
+            _calc.Add(initial, 0);
+            //Test overload
+            Assert.That(_calc.Subtract(b), Is.EqualTo(res));
         }
 
 
@@ -58,6 +92,23 @@ namespace Calculator.Test.Unit
             Assert.That(_calc.Multiply(a,b),Is.EqualTo(res));
         }
 
+        [TestCase(5, 0, 0)]
+        [TestCase(6, 1, 6)]
+        [TestCase(7, -1, -7)]
+        [TestCase(0, 0, 0)]
+        [TestCase(0, 1, 0)]
+        [TestCase(0, -1, 0)]
+        [TestCase(-5, 0, 0)]
+        [TestCase(-6, 1, -6)]
+        [TestCase(-7, -1, 7)]
+        public void MultiOverloadOneParamTest(double initial, double b, double res)
+        {
+            //Store the initial value in accumulator
+            _calc.Add(initial, 0);
+            //Test overload
+            Assert.That(_calc.Multiply(b), Is.EqualTo(res));
+        }
+
         [TestCase(0, 0, 1)]
         [TestCase(0, 1, 0)]
         [TestCase(0, -1, double.PositiveInfinity)]
@@ -72,6 +123,23 @@ namespace Calculator.Test.Unit
             Assert.That(_calc.Power(a, exp), Is.EqualTo(res));
         }
 
+        [TestCase(5, 0, 1)]
+        [TestCase(6, 2, 36)]
+        [TestCase(7, -2, 3.5)]
+        [TestCase(0, 0, 1)]
+        [TestCase(0, 1, 0)]
+        [TestCase(0, -1, double.PositiveInfinity)]
+        [TestCase(-5, 0, 1)]
+        [TestCase(-6, 1, -6)]
+        [TestCase(-2, -1, -0.5)]
+        public void PowerOverloadOneParamTest(double initial, double b, double res)
+        {
+            //Store the initial value in accumulator
+            _calc.Add(initial, 0);
+            //Test overload
+            Assert.That(_calc.Power(b), Is.EqualTo(res));
+        }
+
         [TestCase(0, 1, 0)]
         [TestCase(0, -1, 0)]
         [TestCase(1, 2, 0.5)]
@@ -82,6 +150,21 @@ namespace Calculator.Test.Unit
         {
             Assert.That(_calc.Divide(a, b), Is.EqualTo(res));
         }
+        
+        [TestCase(6, 2, 3)]
+        [TestCase(9, -3, -3)]
+        [TestCase(0, 2, 0)]
+        [TestCase(0, -1, 0)]
+        [TestCase(-1, 2, -0.5)]
+        [TestCase(-5, -2, 2.5)]
+
+        public void DivideOverloadOneParamNonZeroTest(double initial, double b, double res)
+        {
+            //Store the initial value in accumulator
+            _calc.Add(initial, 0);
+            //Test overload
+            Assert.That(_calc.Divide(b), Is.EqualTo(res));
+        }
 
 
         [TestCase(-1)]
@@ -91,7 +174,17 @@ namespace Calculator.Test.Unit
         public void DivideByZeroThrowsArgumentExeptionTest(double a)
         {
             Assert.Throws<ArgumentException>(() => _calc.Divide(a, 0));
-            //Assert.That(_calc.Divide(a, b), Throws.TypeOf<ArgumentException>().With.Property("Value").EqualTo(42));
+        }
+
+        [TestCase(0)]
+        [TestCase(3)]
+        [TestCase(-2)]
+        public void DivideOverloadOneParamNonZeroTest(double initial)
+        {
+            //Store the initial value in accumulator
+            _calc.Add(initial, 0);
+            //Test overload
+            Assert.Throws<ArgumentException>(() => _calc.Divide( 0));
         }
 
         [Test]
