@@ -12,5 +12,3 @@
 */obj
 *.user
 */.vs
-/.vs
-/Calculator.Test.Unit/bin/Debug/netcoreapp3.1
