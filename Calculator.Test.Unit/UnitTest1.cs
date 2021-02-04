@@ -36,7 +36,7 @@ namespace Calculator.Test.Unit
         [TestCase(0, 1, 1)]
         [TestCase(0, -1, -1)]
         [TestCase(-5, 0, -5)]
-        [TestCase(-6, 1, -4)]
+        [TestCase(-6, 1, -5)]
         [TestCase(-7, -1, -8)]
         public void AddOverloadOneParamTest(double initial, double b, double res)
         {
@@ -125,7 +125,7 @@ namespace Calculator.Test.Unit
 
         [TestCase(5, 0, 1)]
         [TestCase(6, 2, 36)]
-        [TestCase(7, -2, 3.5)]
+        [TestCase(2, -2, 0.25)]
         [TestCase(0, 0, 1)]
         [TestCase(0, 1, 0)]
         [TestCase(0, -1, double.PositiveInfinity)]

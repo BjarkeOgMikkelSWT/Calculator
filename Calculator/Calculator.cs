@@ -6,7 +6,7 @@ namespace Hand_Testing_Calculator
 {
     public class Calculator
     {
-        public double Accumulator { get; private set; }
+        public double Accumulator { get; private set; } = 0;
         public double Add(double a, double b)
         {
             Accumulator = a + b;
@@ -26,7 +26,7 @@ namespace Hand_Testing_Calculator
 
         public double Subtract(double a)
         {
-            return Subtract(a, Accumulator);
+            return Subtract(Accumulator,a);
         }
 
         public double Multiply(double a, double b)
@@ -62,8 +62,6 @@ namespace Hand_Testing_Calculator
             Accumulator = divident / divisor;
             return Accumulator;
         }
-
-        public double Accumulator { get; private set; } = 0;
 
         public void Clear()
         {
