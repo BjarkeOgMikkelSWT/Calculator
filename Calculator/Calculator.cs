@@ -25,6 +25,13 @@ namespace Hand_Testing_Calculator
         {
             return Math.Pow(a, exp);
         }
+
+        public double Divide(double divident, double divisor)
+        {
+            if (divisor == 0)
+                throw new ArgumentException("Divide by zero");
+            return divident / divisor;
+        }
     }
 
 }
