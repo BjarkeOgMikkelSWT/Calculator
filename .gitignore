@@ -12,3 +12,5 @@
 */obj
 *.user
 /.vs
+/Calculator/.vs/Calculator/v16/TestStore/0/000.testlog
+/Calculator/.vs/Calculator/v16/TestStore/0/testlog.manifest

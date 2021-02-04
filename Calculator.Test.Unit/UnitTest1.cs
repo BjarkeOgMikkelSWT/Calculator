@@ -72,6 +72,28 @@ namespace Calculator.Test.Unit
             Assert.That(_calc.Power(a, exp), Is.EqualTo(res));
         }
 
+        [TestCase(0, 1, 0)]
+        [TestCase(0, -1, 0)]
+        [TestCase(1, 2, 0.5)]
+        [TestCase(1, -1, -1)]
+        [TestCase(-1, 2, -0.5)]
+        [TestCase(-1, -2, 0.5)]
+        public void DivideByNonZeroTest(double a, double b, double res)
+        {
+            Assert.That(_calc.Divide(a, b), Is.EqualTo(res));
+        }
+
+
+        [TestCase(-1)]
+        [TestCase(1)]
+        [TestCase(0)]
+
+        public void DivideByZeroThrowsArgumentExeptionTest(double a)
+        {
+            Assert.Throws<ArgumentException>(() => _calc.Divide(a, 0));
+            //Assert.That(_calc.Divide(a, b), Throws.TypeOf<ArgumentException>().With.Property("Value").EqualTo(42));
+        }
+        
         [TearDown]
         public void TearDown()
         {
