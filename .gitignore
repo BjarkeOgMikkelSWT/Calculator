@@ -11,4 +11,4 @@
 *.cache
 */obj
 *.user
-/.vs
+*/.vs
