@@ -1,6 +1,7 @@
 using System;
 using System.Security.Cryptography;
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 
 namespace Calculator.Test.Unit
 {
@@ -302,6 +303,38 @@ namespace Calculator.Test.Unit
 
             //Assert
             Assert.That(_calc.Accumulator, Is.Zero);
+        }
+
+        [TestCase(0, 0, Double.NaN)]
+        [TestCase(0, 1, 0)]
+        [TestCase(0, -1, 0)]
+        [TestCase(3, 0, Double.NaN)]
+        [TestCase(4, 3, 1)]
+        [TestCase(5, -3, 2)]
+        [TestCase(-3, 0, Double.NaN)]
+        [TestCase(-4, 3, -1)]
+        [TestCase(-5, -3, -2)]
+
+        public void ModuloTest(double a, double mod, double res)
+        {
+            Assert.That(_calc.Modulo(a, mod), Is.EqualTo(res));
+        }
+
+        [TestCase(5, 0, Double.NaN)]
+        [TestCase(6, 4, 2)]
+        [TestCase(7, -2, 1)]
+        [TestCase(0, 0, Double.NaN)]
+        [TestCase(0, 1, 0)]
+        [TestCase(0, -1, 0)]
+        [TestCase(-5, 0, Double.NaN)]
+        [TestCase(-7, 2, -1)]
+        [TestCase(-7, -4, -3)]
+        public void ModuloOverloadOneParamTest(double initial, double mod, double res)
+        {
+            //Store the initial value in accumulator
+            _calc.Add(initial, 0);
+            //Test overload
+            Assert.That(_calc.Modulo(mod), Is.EqualTo(res));
         }
 
         [TearDown]

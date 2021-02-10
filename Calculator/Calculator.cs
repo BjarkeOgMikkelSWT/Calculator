@@ -72,6 +72,18 @@ namespace Hand_Testing_Calculator
         {
             return Divide(Accumulator, divisor);
         }
+
+        public double Modulo(double a, double mod)
+        {
+            Accumulator = a % mod;
+            return Accumulator;
+        }
+
+        public double Modulo(double mod)
+        {
+            Accumulator %= mod;
+            return Accumulator;
+        }
     }
 
 }
