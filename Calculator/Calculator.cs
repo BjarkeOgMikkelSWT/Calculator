@@ -81,8 +81,7 @@ namespace Hand_Testing_Calculator
 
         public double Modulo(double mod)
         {
-            Accumulator %= mod;
-            return Accumulator;
+            return Modulo(Accumulator, mod);
         }
     }
 
