@@ -305,6 +305,75 @@ namespace Calculator.Test.Unit
             Assert.That(_calc.Accumulator, Is.Zero);
         }
 
+
+        [TestCase(0, 1, 0)]
+        [TestCase(4, 2, 2)]
+        [TestCase(0.5, 1, 0.5)]
+
+        public void RootWithTwoPositiveInputRootIsResultOfRoot(double a, int root, double res)
+        {
+            //Arrange
+            //Action
+            //Assert
+            Assert.That(_calc.Root(a,root),Is.EqualTo(res));
+        }
+
+        [TestCase(1)]
+        [TestCase(5)]
+
+        public void RootWithRootOfZeroThowsException(double a)
+        {
+            Assert.Throws<ArgumentException>(() => _calc.Root(a, 0));
+        }
+
+
+        [TestCase(1,-2)]
+        [TestCase(-1,2)]
+        [TestCase(-2, -2)]
+        [TestCase(0,-4)]
+
+        public void RootWithNegativeInputsThowsException(double a, int root)
+        {
+            Assert.Throws<ArgumentException>(() => _calc.Root(a, root));
+        }
+
+        [TestCase(1, 2, 1)]
+        [TestCase(4, 1, 4)]
+        [TestCase(9, 2, 3)]
+
+        public void RootWithOnePositiveArgumentReturnsResult(double initValue, double root, double res)
+        {
+            //Arrange
+            _calc.Add(initValue);
+            //Action
+            //Assert
+            Assert.That(_calc.Root(root), Is.EqualTo(res));
+        }
+
+        [TestCase(1)]
+        [TestCase(5)]
+
+        public void RootWithOneArgumentZeroTrowsExeption(double initValue)
+        {
+            //Arange
+            _calc.Add(initValue);
+
+            Assert.Throws<ArgumentException>(() => _calc.Root(0));
+        }
+
+        [TestCase(1, -2)]
+        [TestCase(-1, 2)]
+        [TestCase(-2,-2)]
+        [TestCase(0, -4)]
+
+        public void RootWithOneNegativeArgumentThrowsExeption(double initValue, double root)
+        {
+            //Arange
+            _calc.Add(initValue);
+
+            Assert.Throws<ArgumentException>(() => _calc.Root(root));
+        }
+
         [TestCase(0, 0, Double.NaN)]
         [TestCase(0, 1, 0)]
         [TestCase(0, -1, 0)]

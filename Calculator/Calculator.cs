@@ -83,6 +83,34 @@ namespace Hand_Testing_Calculator
         {
             return Modulo(Accumulator, mod);
         }
+
+        public double Root(double a,int root)
+        {
+            if(a < 0||root < 0)
+            {
+                throw new ArgumentException("Root function got negative input");
+            }
+            else if(root == 0)
+            {
+                throw new ArgumentException("Root is zero so dividing by zero");
+            }
+
+            return Power(a,1.0/root);
+        }
+
+        public double Root(double root)
+        {
+            if (Accumulator < 0 ||root < 0)
+            {
+                throw new ArgumentException("Root function got negative input");
+            }
+            else if (root == 0)
+            {
+                throw new ArgumentException("Root is zero so dividing by zero");
+            }
+
+            return Power(Accumulator,1/root);
+        }
     }
 
 }
